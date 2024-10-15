@@ -36,11 +36,16 @@ function (Controller, Device, Filter, FilterOperator, Sorter, Fragment, fioriLib
         },
         
         onTaskPress(oEvent) {
-            const oTask = oEvent.getParameter("listItem"),
+            /*const oTask = oEvent.getParameter("listItem"),
                 taskPath = oTask.getBindingContext("tasks").getPath(),
                 task = taskPath.split("/").slice(-1).pop();
+            
+            this.oRouter.navTo("RouteDetail", {layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded, task: task});*/
 
-            this.oRouter.navTo("RouteDetail", {layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded, task: task});
+            const oTask = oEvent.getParameter("listItem");
+            const sId = oTask.getBindingContext("tasks").getProperty("id");
+
+            this.oRouter.navTo("RouteDetail", {layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded, task: sId});
         },
 
         onSearch(oEvent) {

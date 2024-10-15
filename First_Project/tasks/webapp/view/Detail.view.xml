@@ -10,7 +10,7 @@
         <headerTitle>
             <ObjectPageDynamicHeaderTitle id="taskHeader">
                 <navigationActions>
-                    <m:OverflowToolbarButton 
+                    <!--<m:OverflowToolbarButton 
                     type="Transparent" 
                     icon="sap-icon://full-screen" 
                     press="onEnterFullScreen" 
@@ -25,20 +25,25 @@
                     id="exitFullScreenBtn" 
                     tooltip="Exit Full Screen Mode" 
                     visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"
-                    />
-				<m:OverflowToolbarButton 
-                    type="Transparent" 
-                    icon="sap-icon://decline" 
-                    press="onClose"  
-                    id="close" 
-                    tooltip="Close column" 
-                    />
+                    />-->
+                    <m:OverflowToolbarButton 
+                        id="toggleExpand"
+                        type="Transparent"
+                        press="onToggleExpand"
+                        visible="{helperModel>/showExpand}"/>
+                    <m:OverflowToolbarButton 
+                        type="Transparent" 
+                        icon="sap-icon://decline" 
+                        press="onClose"  
+                        id="close" 
+                        tooltip="Close column" 
+                        />
                 </navigationActions>
                 <expandedHeading>
-                    <m:Title id="taskDetailTitle" text="{tasks>name}" wrapping="true" class="sapUiSmallMarginEnd"/>
+                    <m:Title id="taskDetailTitle" text="{selectedTask>/name}" wrapping="true" class="sapUiSmallMarginEnd"/>
                 </expandedHeading>
                 <snappedHeading>
-                    <m:Title id="taskDetailTitleSnapped" text="{tasks>name}" wrapping="true" class="sapUiTinyMarginEnd"/>
+                    <m:Title id="taskDetailTitleSnapped" text="{selectedTask>/name}" wrapping="true" class="sapUiTinyMarginEnd"/>
                 </snappedHeading>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
@@ -46,15 +51,15 @@
             <m:FlexBox id="headerContentFlexbox" wrap="Wrap" fitContainer="true" alignItems="Stretch">
                 <m:VBox id="vBoxOne" justifyContent="Center" class="sapUiSmallMarginEnd">
                     <m:Label id="senderLabel" text="{i18n>senderLabel}"/>
-                    <m:Text id="senderText" text="{tasks>employee}"/>
+                    <m:Text id="senderText" text="{selectedTask>/employee}"/>
                 </m:VBox>
                 <m:VBox id="vBoxTwo" justifyContent="Center" class="sapUiMediumMarginEnd">
                     <m:Label id="typeLabel" text="{i18n>typeLabel}"/>
-                    <m:Text id="typeText" text="{tasks>type}"/>
+                    <m:Text id="typeText" text="{selectedTask>/type}"/>
                 </m:VBox>
                 <m:VBox id="vBoxThree" justifyContent="Center" class="sapUiMediumMarginEnd">
                     <m:Label id="dueDateLabelDetails" text="{i18n>dueDateLabel}"/>
-                    <m:Text id="dueDateTextDetails" text="{tasks>dueDate}"/>
+                    <m:Text id="dueDateTextDetails" text="{selectedTask>/dueDate}"/>
                 </m:VBox>
 
             </m:FlexBox>
@@ -67,13 +72,13 @@
                             <form:SimpleForm id="taskForm" editable="false" layout="ColumnLayout" title="{i18n>titleDetails}">
                                 <form:content>
                                     <m:Label id="durationLabelDetails" text="{i18n>durationLabel}"/>
-                                    <m:Text id="durationTextDetails" text="{tasks>duration}"/>
+                                    <m:Text id="durationTextDetails" text="{selectedTask>/duration}"/>
                                     <m:Label id="commentLabel" text="{i18n>commentLabel}"/>
-                                    <m:Text id="commentText" text="{tasks>comment}"/>
+                                    <m:Text id="commentText" text="{selectedTask>/comment}"/>
                                     <m:Label id="descriptionLabel" text="{i18n>descriptionLabel}"/>
-                                    <m:Text id="descriptionText" text="{tasks>description}"/>
+                                    <m:Text id="descriptionText" text="{selectedTask>/description}"/>
                                     <m:Label id="priorityLabel" text="{i18n>priorityLabel}"/>
-                                    <m:Text id="priorityText" text="{tasks>priority}"/>
+                                    <m:Text id="priorityText" text="{selectedTask>/priority}"/>
                                 </form:content>
                             </form:SimpleForm>
                         </blocks>

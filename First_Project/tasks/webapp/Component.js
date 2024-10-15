@@ -37,6 +37,10 @@ sap.ui.define([
                 this.oResourceModel = this.getModel("i18n");
                 this.oModel = new JSONModel();
                 this.setModel(this.oModel);
+                this.oHelper = new JSONModel({
+                    showExpand: true
+                });
+                this.setModel(this.oHelper, "helperModel");
             },
 
             getHelper() {

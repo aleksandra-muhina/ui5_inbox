@@ -1,7 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast"
-], function(Controller, MessageToast) {
+    "sap/m/MessageToast",
+    "sap/ui/model/json/JSONModel", 
+    "sap/f/library"
+], function(Controller, MessageToast, JSONModel, fioriLibrary) {
     "use strict";
     
     return Controller.extend("tasks.tasks.controller.Detail", {
@@ -19,27 +21,36 @@ sap.ui.define([
         },
 
         onObjectMatched(oEvent) {
-            this._task = oEvent.getParameter("arguments").task;
+            /*this._task = oEvent.getParameter("arguments").task;
             this.getView().bindElement({
                 path: "/tasks/" + this._task,
                 model: "tasks"
-            })
+            })*/
+
+            const sId = oEvent.getParameter("arguments").task;
+            const aTasks = this.oTaskData.getProperty("/tasks");
+            const oSelected = aTasks.find((task) => task.id === sId);
+            let oSelectedTaskModel = new JSONModel(oSelected);
+            this.getView().setModel(oSelectedTaskModel, "selectedTask");
         }, 
 
         onClose() {
-            const sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/closeColumn");
-            this.oRouter.navTo("RouteList", {layout: sNextLayout});
+            //const sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/closeColumn");
+            this.oRouter.navTo("RouteList", {layout: fioriLibrary.LayoutType.OneColumn});
         },
 
         onEnterFullScreen() {
             /*const sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/fullScreen");
             this.oRouter.navTo("RouteDetail", {layout: sNextLayout, task: this._task});*/
             sap.ui.getCore().byId("application-taskstasks-display-component---fcl--fcl").setLayout("MidColumnFullScreen");
+
+            
         },
 
         onExitFullScreen() {
-            const sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/exitFullScreen");
-            this.oRouter.navTo("RouteDetail", {layout: sNextLayout, task: this._task});
+            /*const sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/exitFullScreen");
+            this.oRouter.navTo("RouteDetail", {layout: sNextLayout, task: this._task});*/
+            sap.ui.getCore().byId("application-taskstasks-display-component---fcl--fcl").setLayout("TwoColumnsMidExpanded");
         },
 
         onApprove(oEvent) {
@@ -68,11 +79,6 @@ sap.ui.define([
                 taskIndex = aTasks.findIndex((task) => task.id === oTaskId);
                 aTasks.splice(taskIndex, 1);
                 this.oTaskData.setProperty("/tasks", aTasks);
-        }, 
-
-        onExit() {
-            this.oRouter.getRoute("RouteList").detachPatternMatched(this.onObjectMatched, this);
-            this.oRouter.getRoute("RouteDetail").detachPatternMatched(this.onObjectMatched, this);
         }
     });
 });

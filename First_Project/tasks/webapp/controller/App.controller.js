@@ -6,7 +6,7 @@ sap.ui.define(
       "use strict";
   
       return BaseController.extend("tasks.tasks.controller.App", {
-        onInit: function() {
+        onInit() {
         }
       });
     }
