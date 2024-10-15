@@ -37,44 +37,13 @@ sap.ui.define([
                 this.oResourceModel = this.getModel("i18n");
                 this.oModel = new JSONModel();
                 this.setModel(this.oModel);
-                this.oHelper = new JSONModel({
-                    showExpand: true
-                });
-                this.setModel(this.oHelper, "helperModel");
             },
-
-            getHelper() {
-                return this._getFcl().then((oFCL) => {
-                    const oSettings = {
-                        defaultTwoColumnLayoutType: fioriLibrary.LayoutType.defaultTwoColumnLayoutType
-                    };
-                    return FlexibleColumnLayoutSemanticHelper.getInstanceFor(oFCL, oSettings);
-                });
-            },
-
-            _getFcl() {
-                return new Promise(function(resolve, reject) {
-                    const oFCL = this.getRootControl().byId('fcl');
-                    if (!oFCL) {
-                        this.getRootControl().attachAfterInit((oEvent) => {
-                            resolve(oEvent.getSource().byId('fcl'));
-                        }, this);
-                        return;
-                    }
-                    resolve(oFCL);
-                }.bind(this));
-		    },
 
             _onBeforeRouteMatched(oEvent) {
-                let sLayout = oEvent.getParameters().arguments.layout,
-                    oNextUIState;
+                let sLayout = oEvent.getParameters().arguments.layout;
 
                 if(!sLayout) {
-                    this.getHelper().then((oHelper) => {
-                        oNextUIState = oHelper.getNextUIState(0);
-                        this.oModel.setProperty("/layout", oNextUIState.layout);
-                    });
-                    return;
+                    sLayout = "OneColumn";
                 }
 
                 this.oModel.setProperty("/layout", sLayout);

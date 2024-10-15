@@ -30,7 +30,8 @@
                         id="toggleExpand"
                         type="Transparent"
                         press="onToggleExpand"
-                        visible="{helperModel>/showExpand}"/>
+                        icon="sap-icon://full-screen"
+                        visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
                     <m:OverflowToolbarButton 
                         type="Transparent" 
                         icon="sap-icon://decline" 

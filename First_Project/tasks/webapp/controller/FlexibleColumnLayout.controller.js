@@ -14,7 +14,6 @@ sap.ui.define([
 		onRouteMatched(oEvent) {
 			const sRouteName = oEvent.getParameter("name");
 			const oArguments = oEvent.getParameter("arguments");
-			this._updateUIElements();
 
 			this.currentRouteName = sRouteName;
 			this.currentTask = oArguments.task;
@@ -23,21 +22,10 @@ sap.ui.define([
 		onStateChanged(oEvent) {
 			const bIsNavigationArrow = oEvent.getParameter("isNavigationArrow"),
 				sLayout = oEvent.getParameter("layout");
-			this._updateUIElements();
 			
 			if(bIsNavigationArrow){
 				this.oRouter.navTo(this.currentRouteName, {layout: sLayout, task: this.currentTask}, true);
 			}
-		},
-
-		_updateUIElements() {
-			const oModel = this.getOwnerComponent().getModel();
-			let oUIState;
-
-			this.getOwnerComponent().getHelper().then((oHelper) => {
-				oUIState = oHelper.getCurrentUIState();
-				oModel.setData(oUIState);
-			});
 		}
     });
 });
