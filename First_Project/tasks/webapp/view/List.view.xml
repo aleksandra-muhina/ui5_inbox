@@ -1,0 +1,99 @@
+<mvc:View displayBlock="true" controllerName="tasks.tasks.controller.List"
+	  xmlns="sap.m"
+	  xmlns:f="sap.f"
+	  xmlns:core="sap.ui.core"
+	  xmlns:mvc="sap.ui.core.mvc">
+	<f:DynamicPage id="dynamicPageId"
+				   toggleHeaderOnTitleClick="false"
+				   class="sapUiNoContentPadding"
+				   showFooter="true">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle id="dynamicP">
+				<f:heading>
+					<Title id="titleHeading" text="{i18n>appTitle}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<Table
+				id="taskTable"
+				mode="SingleSelectMaster"
+				itemPress="onTaskPress"
+				items="{
+					path: 'tasks>/tasks'
+				}"
+				class="sapUiResponsiveMargin"
+				width="auto">
+				<headerToolbar>
+					<OverflowToolbar id="overflowToolbar">
+						<!--<Title id="tableTitle" text="{i18n>title}" />-->
+						<Title id="tableCounter" text="{= ${i18n>title} + ' ' + ${tasks>/tableCounter}}" />
+						<ToolbarSpacer id="toolbarSpacer" />
+						<SearchField id="search" search="onSearch" width="17.5rem"/>
+						<Button 
+							id="sort"
+							tooltip="Sort"
+							icon="sap-icon://sort"
+							press="onSortButtonPress"/>
+						<Button 
+							id="filter"
+							tooltip="Filter"
+							icon="sap-icon://filter"
+							press="onFilterButtonPress"/>
+						<Button 
+							id="group"
+							tooltip="Group"
+							icon="sap-icon://group-2"
+							press="onGroupButtonPress"/>
+					</OverflowToolbar>
+
+				</headerToolbar>
+				<columns>
+					<Column id="taskTitle">
+						<Text id="taskTitleText" text="{i18n>titleText}"/>
+					</Column>
+					<Column id="taskPriority" minScreenWidth="Small" demandPopin="true">
+						<Text id="taskPriorityText" text="{i18n>prioText}" />
+					</Column>
+					<Column id="taskEmployee" demandPopin="true">
+						<Text id="taskEmployeeText" text="{i18n>employeeText}" />
+					</Column>
+					<Column id="taskDueDate" minScreenWidth="Tablet" demandPopin="false">
+						<Text id="taskDateText" text="{i18n>dueDateText}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="itemListColumn" type="Navigation">
+						<cells>
+							<ObjectIdentifier id="taskIdentifier" title="{tasks>name}" text="{tasks>type}"/>
+							<ObjectStatus 
+								id="taskPrioIdentifier" 
+								text="{tasks>priority}"
+								state="{= ${tasks>priority} === 'Very High' ? 'Error' :
+											${tasks>priority} === 'High' ? 'Warning' :
+                        					${tasks>priority} === 'Medium' ? 'None' :
+                        					${tasks>priority} === 'Low' ? 'Success' : 'None' }"
+							/>
+							<Text id="taskEmployeeIdentifier" text="{tasks>employee}" />
+							<Text id="taskDateIdentifier" 
+							text="{
+								path:'tasks>dueDate',
+								type:'sap.ui.model.type.Date',
+								formatOptions: {
+									style: 'medium',
+									source: {
+               							pattern: 'yyyy-MM-dd'
+            						}
+								}
+							}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+		
+	</f:DynamicPage>
+</mvc:View>

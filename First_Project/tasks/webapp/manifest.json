@@ -1,0 +1,111 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "tasks.tasks",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.1",
+      "toolsId": "7dd56090-81e6-48e8-89f2-257af27f0bf7"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.128.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f":{},
+        "sap.uxap":{}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "tasks.tasks.i18n.i18n"
+        }
+      },
+      "tasks": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/tasks.json"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "tasks.tasks.view",
+        "controlId": "fcl",
+        "controlAggregation": "beginColumnPages",
+        "transition": "slide",
+        "bypassed": {
+          "target":"notFound"
+        }
+      },
+      "routes": [
+        {
+          "name": "RouteList",
+          "pattern": ":layout:",
+          "target": [
+            "TargetList"
+          ]
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "detail/{task}/{layout}",
+          "target": ["TargetList","TargetDetail"]
+        }
+      ],
+      "targets": {
+        "TargetList": {
+          "viewId": "List",
+          "viewName": "List",
+          "viewLevel": 1,
+          "controlAggregation": "beginColumnPages"
+        },
+        "TargetDetail": {
+          "viewId": "Detail",
+          "viewName": "Detail",
+          "viewLevel": 2,
+          "controlAggregation": "midColumnPages"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "tasks.tasks.view.FlexibleColumnLayout",
+      "type": "XML",
+      "async": true,
+      "id": "fcl"
+    }
+  }
+}

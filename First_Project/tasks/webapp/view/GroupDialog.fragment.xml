@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+        id="groupDialog"
+		confirm="onGroupDialogConfirm"
+		reset="resetGroupDialog"
+		>
+		<groupItems>
+			<ViewSettingsItem id="groupType" text="Type" key="type"/>
+			<ViewSettingsItem id="groupPriority" text="Priority" key="priority"/>
+			<ViewSettingsItem id="groupEmployee" text="Employee" key="employee"/>
+		</groupItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

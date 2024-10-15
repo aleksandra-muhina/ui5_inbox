@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ViewSettingsDialog 
+        id="filterDialog"
+        confirm="onFilterDialogConfirm">
+        <filterItems>
+            <ViewSettingsFilterItem 
+                id="filterItemType"
+                text="Type"
+                key="type"
+                multiSelect="false">
+                <items>
+                    <ViewSettingsItem id="vacationItem" text="Vacation" key="vacation"/>
+                    <ViewSettingsItem id="equipmentItem" text="Equipment" key="equipment"/>
+                    <ViewSettingsItem id="travelItem" text="Travel" key="travel"/>
+                </items>
+            </ViewSettingsFilterItem>
+            <ViewSettingsFilterItem 
+                id="filterItem"
+                text="Priority"
+                key="priority"
+                multiSelect="true">
+                <items>
+                    <ViewSettingsItem id="lowItem" text="Low" key="low"/>
+                    <ViewSettingsItem id="mediumItem" text="Medium" key="medium"/>
+                    <ViewSettingsItem id="highItem" text="High" key="high"/>
+                    <ViewSettingsItem id="veryHighItem" text="Very High" key="high"/>
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

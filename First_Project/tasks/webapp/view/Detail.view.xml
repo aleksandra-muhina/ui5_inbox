@@ -1,0 +1,101 @@
+<mvc:View
+    controllerName="tasks.tasks.controller.Detail"
+    xmlns="sap.uxap"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:form="sap.ui.layout.form">
+    <ObjectPageLayout 
+        id="detailPage"
+        showFooter="true">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle id="taskHeader">
+                <navigationActions>
+                    <m:OverflowToolbarButton 
+                    type="Transparent" 
+                    icon="sap-icon://full-screen" 
+                    press="onEnterFullScreen" 
+                    id="enterFullScreenBtn" 
+                    tooltip="Enter Full Screen Mode" 
+                    visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"
+                    />
+				<m:OverflowToolbarButton 
+                    type="Transparent" 
+                    icon="sap-icon://exit-full-screen" 
+                    press="onExitFullScreen" 
+                    id="exitFullScreenBtn" 
+                    tooltip="Exit Full Screen Mode" 
+                    visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"
+                    />
+				<m:OverflowToolbarButton 
+                    type="Transparent" 
+                    icon="sap-icon://decline" 
+                    press="onClose"  
+                    id="close" 
+                    tooltip="Close column" 
+                    />
+                </navigationActions>
+                <expandedHeading>
+                    <m:Title id="taskDetailTitle" text="{tasks>name}" wrapping="true" class="sapUiSmallMarginEnd"/>
+                </expandedHeading>
+                <snappedHeading>
+                    <m:Title id="taskDetailTitleSnapped" text="{tasks>name}" wrapping="true" class="sapUiTinyMarginEnd"/>
+                </snappedHeading>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+        <headerContent>
+            <m:FlexBox id="headerContentFlexbox" wrap="Wrap" fitContainer="true" alignItems="Stretch">
+                <m:VBox id="vBoxOne" justifyContent="Center" class="sapUiSmallMarginEnd">
+                    <m:Label id="senderLabel" text="{i18n>senderLabel}"/>
+                    <m:Text id="senderText" text="{tasks>employee}"/>
+                </m:VBox>
+                <m:VBox id="vBoxTwo" justifyContent="Center" class="sapUiMediumMarginEnd">
+                    <m:Label id="typeLabel" text="{i18n>typeLabel}"/>
+                    <m:Text id="typeText" text="{tasks>type}"/>
+                </m:VBox>
+                <m:VBox id="vBoxThree" justifyContent="Center" class="sapUiMediumMarginEnd">
+                    <m:Label id="dueDateLabelDetails" text="{i18n>dueDateLabel}"/>
+                    <m:Text id="dueDateTextDetails" text="{tasks>dueDate}"/>
+                </m:VBox>
+
+            </m:FlexBox>
+        </headerContent>
+        <sections>
+            <ObjectPageSection id="objPageSection" showTitle="false">
+                <subSections>
+                    <ObjectPageSubSection id="objPageSubSection">
+                        <blocks>
+                            <form:SimpleForm id="taskForm" editable="false" layout="ColumnLayout" title="{i18n>titleDetails}">
+                                <form:content>
+                                    <m:Label id="durationLabelDetails" text="{i18n>durationLabel}"/>
+                                    <m:Text id="durationTextDetails" text="{tasks>duration}"/>
+                                    <m:Label id="commentLabel" text="{i18n>commentLabel}"/>
+                                    <m:Text id="commentText" text="{tasks>comment}"/>
+                                    <m:Label id="descriptionLabel" text="{i18n>descriptionLabel}"/>
+                                    <m:Text id="descriptionText" text="{tasks>description}"/>
+                                    <m:Label id="priorityLabel" text="{i18n>priorityLabel}"/>
+                                    <m:Text id="priorityText" text="{tasks>priority}"/>
+                                </form:content>
+                            </form:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+        <footer>
+			<m:OverflowToolbar id="footerToolbar" height="auto" visible="true" width="100%" design="Solid">
+				<m:ToolbarSpacer id="footerToolbarSpacer"/>
+				<m:Button id="acceptBtn" text="Accept" type="Accept" press="onApprove">
+					<m:layoutData>
+						<m:OverflowToolbarLayoutData id="layoutDataAccept" priority="NeverOverflow" />
+					</m:layoutData>
+				</m:Button>
+				<m:Button id="rejectBtn" text="Reject" type="Reject" press="onReject">
+					<m:layoutData>
+						<m:OverflowToolbarLayoutData id="layoutDataReject" priority="NeverOverflow" />
+					</m:layoutData>
+				</m:Button>
+				<m:OverflowToolbarButton id="forwardBtn" tooltip="Forward" text="Forward" icon="sap-icon://forward" press="onForward"/>
+			</m:OverflowToolbar>
+		</footer>
+    </ObjectPageLayout>
+</mvc:View> 

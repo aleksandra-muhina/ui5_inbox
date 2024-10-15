@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+        id="sortDialog"
+		confirm="onSortDialogConfirm">
+		<sortItems>
+			<ViewSettingsItem id="sortByTitle" text="Title" key="name" selected="true" />
+			<ViewSettingsItem id="sortByPriority" text="Priority" key="priority" />
+			<ViewSettingsItem id="sortByEmployee" text="Employee" key="employee" />
+			<ViewSettingsItem id="sortByDueDate" text="Due Date" key="dueDate" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

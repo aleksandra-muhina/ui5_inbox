@@ -1,0 +1,103 @@
+{
+  "tasks": [
+    {
+      "name": "Summer Vacation",
+      "type": "Vacation",
+      "id": 1,
+      "priority": "Low",
+      "employee": "Carol White",
+      "dueDate": "2025-05-07",
+      "duration": "12-06-2025 - 20-06-2025",
+      "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "name": "Winter Holiday",
+      "type": "Vacation",
+      "id": 2,
+      "priority": "High",
+      "employee": "Emily Green",
+      "dueDate": "2025-11-15",
+      "duration": "18-12-2025 - 28-12-2025",
+      "comment": "Duis aute irure dolor in reprehenderit in voluptate",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "name": "Spring Break",
+      "type": "Vacation",
+      "id": 3,
+      "priority": "Low",
+      "employee": "Bob Smith",
+      "dueDate": "2025-02-20",
+      "duration": "21-02-2025 - 03-03-2025",
+      "comment": "Excepteur sint occaecat cupidatat non proident,",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    },
+    {
+      "name": "New Laptop",
+      "type": "Equipment",
+      "id": 4,
+      "priority": "Low",
+      "employee": "Bob Smith",
+      "dueDate": "2025-01-02",
+      "duration": "N/A",
+      "comment": "New laptop needed for Bob",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "name": "Office Chair",
+      "type": "Equipment",
+      "id": 5,
+      "priority": "High",
+      "employee": "Emily Green",
+      "dueDate": "2025-02-19",
+      "duration": "N/A",
+      "comment": "Emily needs a new chair",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "name": "Monitor Upgrade",
+      "type": "Equipment",
+      "id": 6,
+      "priority": "Medium",
+      "employee": "David Lee",
+      "dueDate": "2025-03-05",
+      "duration": "N/A",
+      "comment": "a device used for observing, checking, or keeping a continuous record of something.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    },
+    {
+      "name": "Conference Travel",
+      "type": "Travel",
+      "id": 7,
+      "priority": "Medium",
+      "employee": "Alice Johnson",
+      "dueDate": "2025-04-12",
+      "duration": "18-05-2025 - 28-05-2025",
+      "comment": "May I please join the Conference trip?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "name": "Client Meeting",
+      "type": "Travel",
+      "id": 8,
+      "priority": "Very High",
+      "employee": "Emily Green",
+      "dueDate": "2025-05-27",
+      "duration": "08-08-2025 - 18-08-2025",
+      "comment": "I will participate in the client meeting in February",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "name": "Sales Trip",
+      "type": "Travel",
+      "id": 9,
+      "priority": "High",
+      "employee": "Bob Smith",
+      "dueDate": "2025-06-03",
+      "duration": "01-11-2025 - 10-11-2025",
+      "comment": "please approve the sales trip",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    }
+  ]
+}
