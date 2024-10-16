@@ -52,41 +52,30 @@ sap.ui.define([
                 oFCL.setLayout(fioriLibrary.LayoutType.TwoColumnsMidExpanded);
                 oToggleButton.setIcon("sap-icon://full-screen");
             }
-
-
         },
 
-        /*onEnterFullScreen() {
-            const sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/fullScreen");
-            this.oRouter.navTo("RouteDetail", {layout: sNextLayout, task: this._task});
-            sap.ui.getCore().byId("application-taskstasks-display-component---fcl--fcl").setLayout("MidColumnFullScreen");
-        },
-
-        onExitFullScreen() {
-            const sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/exitFullScreen");
-            this.oRouter.navTo("RouteDetail", {layout: sNextLayout, task: this._task});
-            sap.ui.getCore().byId("application-taskstasks-display-component---fcl--fcl").setLayout("TwoColumnsMidExpanded");
-        },*/
-
-        onApprove(oEvent) {
-            const oTaskId = oEvent.getSource().getBindingContext("tasks").getProperty("id");
+        onApprove() {
+            const oTaskId = this.getView().getModel("selectedTask").getData().id;
             const sApproveMsg = this.oResourceBundle.getText("approveMsg");
             MessageToast.show(sApproveMsg);
             this.removeEntry(oTaskId);
+            this.oRouter.navTo("RouteList", {layout: fioriLibrary.LayoutType.OneColumn});
         },
 
-        onReject(oEvent) {
-            const oTaskId = oEvent.getSource().getBindingContext("tasks").getProperty("id");
+        onReject() {
+            const oTaskId = this.getView().getModel("selectedTask").getData().id;
             const sApproveMsg = this.oResourceBundle.getText("rejectMsg");
             MessageToast.show(sApproveMsg);
             this.removeEntry(oTaskId);
+            this.oRouter.navTo("RouteList", {layout: fioriLibrary.LayoutType.OneColumn});
         },
 
-        onForward(oEvent) {
-            const oTaskId = oEvent.getSource().getBindingContext("tasks").getProperty("id");
+        onForward() {
+            const oTaskId = this.getView().getModel("selectedTask").getData().id;
             const sApproveMsg = this.oResourceBundle.getText("forwardMsg");
             MessageToast.show(sApproveMsg);
             this.removeEntry(oTaskId);
+            this.oRouter.navTo("RouteList", {layout: fioriLibrary.LayoutType.OneColumn});
         },
 
         removeEntry(oTaskId) {

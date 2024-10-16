@@ -10,28 +10,12 @@
         <headerTitle>
             <ObjectPageDynamicHeaderTitle id="taskHeader">
                 <navigationActions>
-                    <!--<m:OverflowToolbarButton 
-                    type="Transparent" 
-                    icon="sap-icon://full-screen" 
-                    press="onEnterFullScreen" 
-                    id="enterFullScreenBtn" 
-                    tooltip="Enter Full Screen Mode" 
-                    visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"
-                    />
-				<m:OverflowToolbarButton 
-                    type="Transparent" 
-                    icon="sap-icon://exit-full-screen" 
-                    press="onExitFullScreen" 
-                    id="exitFullScreenBtn" 
-                    tooltip="Exit Full Screen Mode" 
-                    visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"
-                    />-->
                     <m:OverflowToolbarButton 
                         id="toggleExpand"
                         type="Transparent"
                         press="onToggleExpand"
                         icon="sap-icon://full-screen"
-                        visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
+                        visible="{helper>/showToggle}"/>
                     <m:OverflowToolbarButton 
                         type="Transparent" 
                         icon="sap-icon://decline" 

@@ -37,6 +37,10 @@ sap.ui.define([
                 this.oResourceModel = this.getModel("i18n");
                 this.oModel = new JSONModel();
                 this.setModel(this.oModel);
+                this.oHelperModel = new JSONModel({
+                    showToggle: true
+                });
+                this.setModel(this.oHelperModel, "helper")
             },
 
             _onBeforeRouteMatched(oEvent) {
