@@ -17,12 +17,15 @@ function (Controller, Device, Filter, FilterOperator, Sorter, Fragment, fioriLib
             this.oTitle = this.getView().byId("tableTitle");
             this.oTable = this.getView().byId("taskTable");
             this._mViewSettingsDialogs = {};
-
             this.oRouter = this.getOwnerComponent().getRouter();
+            
         },
 
         onAfterRendering() {
             this.updateTaskNumber();
+            //Update the task number after taking an action
+            const oBinding = this.oTable.getBinding("items");
+            oBinding.attachChange(this.updateTaskNumber, this);
             /*const widthDiv = document.getElementById("application-taskstasks-display");
             widthDiv.classList.remove("sapUShellApplicationContainerLimitedWidth");*/
         },
@@ -32,7 +35,6 @@ function (Controller, Device, Filter, FilterOperator, Sorter, Fragment, fioriLib
             this.oTaskModel.setProperty("/tableCounter", oTableItems);
             /*const sTitleText = this.oResourceBundle.getText("title", [oTableItems]);
             this.oTitle.setText(sTitleText);*/
-
         },
         
         onTaskPress(oEvent) {

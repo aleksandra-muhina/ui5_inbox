@@ -30,7 +30,7 @@
 				<headerToolbar>
 					<OverflowToolbar id="overflowToolbar">
 						<!--<Title id="tableTitle" text="{i18n>title}" />-->
-						<Title id="tableCounter" text="{= ${i18n>title} + ' ' + ${tasks>/tableCounter}}" />
+						<Title id="tableCounter" text="{= ${i18n>title} + ' ' + '(' + ${tasks>/tableCounter} + ')'}" />
 						<ToolbarSpacer id="toolbarSpacer" />
 						<SearchField id="search" search="onSearch" width="17.5rem"/>
 						<Button 
