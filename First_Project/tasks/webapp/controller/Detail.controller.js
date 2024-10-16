@@ -55,11 +55,13 @@ sap.ui.define([
         },
 
         onApprove() {
-            const oTaskId = this.getView().getModel("selectedTask").getData().id;
+            /*const oTaskId = this.getView().getModel("selectedTask").getData().id;
             const sApproveMsg = this.oResourceBundle.getText("approveMsg");
             MessageToast.show(sApproveMsg);
             this.removeEntry(oTaskId);
-            this.oRouter.navTo("RouteList", {layout: fioriLibrary.LayoutType.OneColumn});
+            this.oRouter.navTo("RouteList", {layout: fioriLibrary.LayoutType.OneColumn});*/
+
+            this.onClick("approveMsg", MessageToast);
         },
 
         onReject() {
@@ -74,6 +76,14 @@ sap.ui.define([
             const oTaskId = this.getView().getModel("selectedTask").getData().id;
             const sApproveMsg = this.oResourceBundle.getText("forwardMsg");
             MessageToast.show(sApproveMsg);
+            this.removeEntry(oTaskId);
+            this.oRouter.navTo("RouteList", {layout: fioriLibrary.LayoutType.OneColumn});
+        },
+
+        onClick(message, callback) {
+            const oTaskId = this.getView().getModel("selectedTask").getData().id;
+            const sApproveMsg = this.oResourceBundle.getText(message);
+            callback.show(sApproveMsg);
             this.removeEntry(oTaskId);
             this.oRouter.navTo("RouteList", {layout: fioriLibrary.LayoutType.OneColumn});
         },
